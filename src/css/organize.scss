@@ -1,0 +1,96 @@
+.extension-select-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.extension-search {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#extension-select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 300px;
+  background-color: white;
+}
+
+#extension-select option {
+  padding: 4px 8px;
+}
+
+#extension-select option:hover {
+  background-color: #f0f0f0;
+}
+
+.folder-configs {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 20px 0;
+  max-width: 600px;
+}
+
+.folder-group {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding: 12px;
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.folder-name-input,
+.extensions-input {
+  padding: 8px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.folder-name-input {
+  width: 200px;
+}
+
+.extensions-input {
+  flex: 1;
+}
+
+.add-folder-btn {
+  padding: 12px 24px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.remove-folder-btn {
+  background-color: #ff4444;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-folder-btn:hover {
+  background-color: #45a049;
+}
+
+.remove-folder-btn:hover {
+  background-color: #cc0000;
+}

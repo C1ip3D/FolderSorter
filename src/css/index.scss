@@ -1,0 +1,43 @@
+@use './theme.scss' as *;
+
+body {
+  font-family: $font-sans;
+  font-size: $text-base;
+  line-height: $leading-normal;
+  color: $text-primary;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: $background-primary;
+  padding: 2rem;
+  margin: 0;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: $text-3xl;
+  font-weight: $font-bold;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: $text-2xl;
+  font-weight: $font-bold;
+  margin-bottom: 0.75rem;
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: $leading-relaxed;
+}
+
+a {
+  color: $accent-color;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
+  }
+}

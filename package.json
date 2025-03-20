@@ -1,0 +1,75 @@
+{
+  "name": "folder-sorter",
+  "version": "0.1.0",
+  "description": "a folder sorter that organizes files and folders based on your liking!",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "build:dev": "webpack --mode development",
+    "build:prod": "webpack --mode production",
+    "app:node": "nodemon server.js",
+    "app:electron": "electron .",
+    "app:watch": "webpack --watch",
+    "app:package-mac": "electron-builder build --mac",
+    "app:package-win": "electron-builder build --win",
+    "app:package-linux": "electron-builder build --linux",
+    "app:package-all": "electron-builder build -mwl"
+  },
+  "build": {
+    "appId": "com.foldersorter.app",
+    "productName": "Folder Sorter",
+    "directories": {
+      "output": "dist"
+    },
+    "extraResources": [
+      {
+        "from": "node_modules/",
+        "to": "app/node_modules/"
+      }
+    ],
+    "files": [
+      "**/*",
+      "!node_modules/**/*",
+      ".env"
+    ],
+    "asarUnpack": [
+      "node_modules"
+    ],
+    "mac": {
+      "target": [
+        "dmg"
+      ],
+      "category": "public.app-category.utilities",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
+      "entitlements": "build/entitlements.mac.plist",
+      "entitlementsInherit": "build/entitlements.mac.plist"
+    }
+  },
+  "author": "C1ip3D",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.26.9",
+    "@babel/preset-env": "^7.26.9",
+    "babel-loader": "^10.0.0",
+    "css-loader": "^7.1.2",
+    "electron": "^35.0.0",
+    "electron-builder": "^25.1.8",
+    "html-webpack-plugin": "^5.6.3",
+    "mini-css-extract-plugin": "^2.9.2",
+    "sass": "^1.85.1",
+    "sass-loader": "^16.0.5",
+    "style-loader": "^4.0.0",
+    "webpack": "^5.98.0",
+    "webpack-cli": "^6.0.1"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "fs": "^0.0.1-security",
+    "mime-types": "^2.1.35",
+    "nodemon": "^3.1.9",
+    "openai": "^4.86.1",
+    "path": "^0.12.7"
+  }
+}
