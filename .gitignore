@@ -1,6 +1,29 @@
+# Node dependencies
 node_modules
 
+# Environment files
 .env*
 .flaskenv*
 !.env.project
-.env.vault
+!.env.vault
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# Build outputs
+.cache/
+.webpack/
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.iml
