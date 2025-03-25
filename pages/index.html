@@ -3,25 +3,81 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Electron App</title>
+    <title>File Organizer</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        text-align: center;
+        padding: 20px;
+      }
+      .container {
+        max-width: 600px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h1 {
+        color: #333;
+      }
+      .steps {
+        margin-top: 20px;
+      }
+      .steps div {
+        background: #f9f9f9;
+        padding: 15px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        border-left: 5px solid #007bff;
+      }
+      button {
+        background: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+      button:hover {
+        background: #0056b3;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+        background: #28a745;
+        padding: 10px 15px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-top: 10px;
+      }
+      a:hover {
+        background: #218838;
+      }
+    </style>
   </head>
   <body>
-    <h1>File Organizer</h1>
-    <p>Organize your files with this app</p>
+    <div class="container">
+      <h1>File Organizer</h1>
+      <p>Organize your files with this app</p>
 
-    <div class="steps">
-      <div class="grant">
-        <h3>Step 1: Grant Permissions to access file system</h3>
-        <p>Always have backups for your files. Something can always go wrong</p>
-        <button id="permission-btn">Request Permissions!</button>
+      <div class="steps">
+        <div class="grant">
+          <h3>Step 1: Grant Permissions to Access File System</h3>
+          <p>Always have backups for your files. Something can always go wrong.</p>
+          <button id="permission-btn">Request Permissions!</button>
+        </div>
+        <div class="organization">
+          <h3>Step 2: How Do You Want to Organize It?</h3>
+          <p>e.g., .pdf, .doc, .word in a Work Documents folder.</p>
+        </div>
+        <h3>Step 3: Click Organize!</h3>
       </div>
-      <div class="organization">
-        <h3>Step 2: How do you want to organize it?</h3>
-        <p>E.G. .pdf .doc .word in a work documents folder</p>
-      </div>
-      <h3>Step 3: Click Organize!</h3>
+
+      <h2><a href="organize.html">You Ready?</a></h2>
     </div>
-
-    <h2><a href="organize.html">You Ready?</a></h2>
   </body>
 </html>
