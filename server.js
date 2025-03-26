@@ -12,8 +12,6 @@ import mimeTypes from 'mime-types';
 import { OpenAI } from 'openai';
 import { readdirSync, mkdirSync, existsSync, renameSync } from 'fs';
 
-
-
 // Variables
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -26,7 +24,7 @@ dotenv.config({ path: path.join(__dirname, '.env') });
 
 // Initialize OpenAI
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || new Error('OpenAI API key not found')
+  apiKey: process.env.OPENAI_API_KEY || new Error('OpenAI API key not found'),
 });
 
 // Express setup
@@ -80,9 +78,26 @@ ipcMain.handle('request-directory-access', async () => {
 ipcMain.handle('get-mime-types', () => {
   try {
     const uniqueExtensions = new Set();
-    Object.values(mimeTypes.extensions).forEach((exts) =>
-      exts.forEach((ext) => uniqueExtensions.add(ext))
-    );
+    Object.values(
+      mimeTypes.extensions[
+        ('application/x-msdownload',
+        'application/x-sh',
+        'application/x-executable',
+        'text/html',
+        'text/css',
+        'application/javascript',
+        'application/pdf',
+        'application/msword',
+        'application/vnd.ms-excel',
+        'text/plain',
+        'image/jpeg',
+        'image/png',
+        'image/gif',
+        'image/svg+xml',
+        'image/webp',
+        'image/tiff')
+      ]
+    ).forEach((exts) => exts.forEach((ext) => uniqueExtensions.add(ext)));
     return Array.from(uniqueExtensions).sort();
   } catch (error) {
     console.error('Error getting mime types:', error);

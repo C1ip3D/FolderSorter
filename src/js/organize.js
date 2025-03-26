@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', () => {
       }
 
       console.log('Starting file organization with configs:', configs);
-      const organizedFiles = await window.electronAPI.organizeFiles(
+      await window.electronAPI.organizeFiles(
         directoryOrganize.directory,
         configs
       );
@@ -60,7 +60,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 //     container.appendChild(searchInput);
 //     container.appendChild(dropdown);
-
 //   } catch (error) {
 //     console.error('Failed to initialize:', error);
 //   }
@@ -69,7 +68,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function parseExtensions(input) {
   return input
     .replace(/[,;]/g, ' ')
-    .split(/\s+/) 
+    .split(/\s+/)
     .map((ext) => ext.trim().toLowerCase().replace(/^\.+/, ''))
     .filter((ext) => ext);
 }
@@ -140,11 +139,10 @@ function createFolderConfig() {
 
   container.appendChild(addButton);
   createNewFolderInput(container, folderConfigs);
-
   return container;
 }
 
-function createNewFolderInput(container, folderConfigs) {
+async function createNewFolderInput(container, folderConfigs) {
   const folderGroup = document.createElement('div');
   folderGroup.className = 'folder-group';
 
@@ -165,15 +163,56 @@ function createNewFolderInput(container, folderConfigs) {
   nameContainer.appendChild(folderNameInput);
   nameContainer.appendChild(suggestButton);
 
-  // Extensions input
-  const extensionsInput = document.createElement('input');
-  extensionsInput.type = 'text';
-  extensionsInput.placeholder = 'Extensions (e.g., pdf, doc, docx)';
-  extensionsInput.className = 'extensions-input';
+  // Extensions input (old)
+  // const extensionsInput = document.createElement('select');
+  // extensionsInput.placeholder = 'Extensions (e.g., pdf, doc, docx)';
+  // const options = await window.electronAPI.getMimeTypes();
+  // options.forEach((ext) => {
+  //   const option = document.createElement('option');
+  //   option.value = ext;
+  //   option.textContent = ext;
+  //   extensionsInput.appendChild(option);
+  // })
+  // extensionsInput.className = 'extensions-input';
+
+  // Create the search input box
+  const searchInput = document.createElement('input');
+  searchInput.placeholder = 'Search extensions...';
+  searchInput.className = 'search-input';
+  document.body.appendChild(searchInput); 
+
+  // Create a container for the list
+  const listContainer = document.createElement('div');
+  document.body.appendChild(listContainer); 
+
+  const options = await window.electronAPI.getMimeTypes();
+
+  options.forEach((ext) => {
+    const listItem = document.createElement('p');
+    listItem.textContent = ext;
+    listContainer.appendChild(listItem);
+  });
+
+  if(searchInput.value === '') {
+    listContainer.style.display = 'none'; 
+  }
+
+  // Filter the list based on the input
+  searchInput.addEventListener('input', (e) => {
+    listContainer.style.display = 'block'; 
+    const query = e.target.value.toLowerCase();
+    const listItems = listContainer.getElementsByTagName('p');
+
+    Array.from(listItems).forEach((item) => {
+      const match = item.textContent.toLowerCase().includes(query);
+      item.style.display = match ? '' : 'none'; 
+    });
+  });
+
 
   // AI suggestion handler
   suggestButton.addEventListener('click', async () => {
-    const extensions = parseExtensions(extensionsInput.value);
+    const extensions = parseExtensions(searchInput.value);
 
     if (extensions.length === 0) {
       alert('Please enter some extensions first');
@@ -210,7 +249,8 @@ function createNewFolderInput(container, folderConfigs) {
   });
 
   folderGroup.appendChild(nameContainer);
-  folderGroup.appendChild(extensionsInput);
+  folderGroup.appendChild(searchInput);
+  folderGroup.appendChild(searchInput);
   folderGroup.appendChild(removeBtn);
 
   container.insertBefore(folderGroup, container.lastChild);

@@ -4,70 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>File Organizer</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f4f4;
-        text-align: center;
-        padding: 20px;
-      }
-      .container {
-        max-width: 600px;
-        margin: auto;
-        background: white;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      }
-      h1, h2, h3 {
-        color: #333;
-      }
-      .extension-selector, .organization-setup {
-        background: #fff;
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-      }
-      p {
-        color: #555;
-      }
-      button {
-        background: #007bff;
-        color: white;
-        border: none;
-        padding: 10px 15px;
-        font-size: 16px;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background 0.3s;
-      }
-      button:hover {
-        background: #0056b3;
-      }
-      #extension-search-container, #selected-extensions, #folder-config-container {
-        margin: 10px 0;
-        padding: 10px;
-        background: #f9f9f9;
-        border-radius: 5px;
-        min-height: 40px;
-        border: 1px solid #ddd;
-      }
-    </style>
   </head>
   <body>
     <div class="container">
       <h1>File Organizer</h1>
-      <p>Organize your files with this app</p>
       
-      <div class="extension-selector">
+      <!-- <div class="extension-selector">
         <h3>Select File Extensions to Organize</h3>
         <div id="extension-search-container"></div>
         <div id="selected-extensions"></div>
-      </div>
+      </div> -->
   
       <div class="organization-setup">
-        <h2>Folder Organization Setup</h2>
         <p>Create folders and specify which file extensions should go in each folder.</p>
         <div id="folder-config-container"></div>
         <button id="start-organizing" class="organize-btn">Start Organizing</button>
